@@ -11,9 +11,11 @@ public class NumberConverter {
   }
 
   public int convertFromRomanToArabic(String toConvert) {
-    if (toConvert.equals("II"))
-      return 2;
-    return 1;
+    int arabicValue = 0;
+    for (int i = 0; i < toConvert.length(); ++i) {
+      ++arabicValue;
+    }
+    return arabicValue;
   }
 
   private int buildRomanNumber(StringBuilder romanNumber, int restToTreat) {
