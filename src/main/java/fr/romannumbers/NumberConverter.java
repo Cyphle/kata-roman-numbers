@@ -14,7 +14,7 @@ class NumberConverter {
     int arabicValue = 0;
     for (int i = 0; i < toConvert.length(); ++i) {
       NumbersCorrespondence correspondence = NumbersCorrespondence.findByRoman(toConvert.substring(i, i + 1));
-      NumbersCorrespondence correspondenceNextChar = NumbersCorrespondence.findByRoman(toConvert.substring(i, i + 1));
+      NumbersCorrespondence correspondenceNextChar = correspondence;
 
       if ((i + 1) < toConvert.length())
         correspondenceNextChar = NumbersCorrespondence.findByRoman(toConvert.substring(i + 1, i + 2));
