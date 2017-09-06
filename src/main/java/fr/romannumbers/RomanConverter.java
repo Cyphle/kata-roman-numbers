@@ -2,15 +2,21 @@ package fr.romannumbers;
 
 public class RomanConverter {
   public String convertFromArabicToRoman(int toConvert) {
-    if (toConvert == 5)
-      return "V";
-
-    if (toConvert == 4)
+    if (toConvert == 4) {
       return "IV";
+    }
 
     StringBuilder romanNumber = new StringBuilder();
-    for (int i = 1; i <= toConvert; ++i)
+    int end = toConvert;
+
+    if (toConvert >= 5) {
+      romanNumber.append("V");
+      end = toConvert - 5;
+    }
+
+    for (int i = 1; i <= end; ++i)
       romanNumber.append("I");
+
     return romanNumber.toString();
   }
 }
