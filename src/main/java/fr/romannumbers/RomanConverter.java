@@ -2,9 +2,9 @@ package fr.romannumbers;
 
 public class RomanConverter {
   public String convertFromArabicToRoman(int toConvert) {
-    if (toConvert == 4) {
-      return "IV";
-    }
+    if (toConvert == 9) return "IX";
+
+    if (toConvert == 4) return "IV";
 
     StringBuilder romanNumber = new StringBuilder();
     int end = toConvert;
