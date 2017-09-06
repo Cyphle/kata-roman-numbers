@@ -59,4 +59,9 @@ public class RomanConverterTest {
   public void should_convert_10_to_roman_X() throws Exception {
     assertThat(converter.convertFromArabicToRoman(10)).isEqualTo("X");
   }
+
+  @Test
+  public void should_convert_any_number_to_roman() throws Exception {
+    assertThat(converter.convertFromArabicToRoman(1903)).isEqualTo("MCMIII");
+  }
 }
