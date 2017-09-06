@@ -5,13 +5,12 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RomanConverterTest {
-
-  private RomanConverter converter;
+public class ToRomanConverterTest {
+  private NumberConverter converter;
 
   @Before
   public void setUp() throws Exception {
-    converter = new RomanConverter();
+    converter = new NumberConverter();
   }
 
   @Test

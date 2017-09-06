@@ -1,6 +1,6 @@
 package fr.romannumbers;
 
-public class RomanConverter {
+public class NumberConverter {
   public String convertFromArabicToRoman(int toConvert) {
     StringBuilder romanNumber = new StringBuilder();
     int restToTreat = toConvert;
