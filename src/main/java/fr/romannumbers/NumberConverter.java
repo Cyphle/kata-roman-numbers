@@ -10,6 +10,10 @@ public class NumberConverter {
     return romanNumber.toString();
   }
 
+  public int convertFromRomanToArabic(String toConvert) {
+    return 1;
+  }
+
   private int buildRomanNumber(StringBuilder romanNumber, int restToTreat) {
     for (NumbersCorrespondence correspondence : NumbersCorrespondence.values()) {
       restToTreat = findRomanValue(romanNumber, restToTreat, correspondence);
