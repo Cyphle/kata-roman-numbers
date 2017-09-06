@@ -2,25 +2,26 @@ package fr.romannumbers;
 
 public class RomanConverter {
   public String convertFromArabicToRoman(int toConvert) {
-    if (toConvert < 10) {
-      if (toConvert == 9) return "IX";
-
-      if (toConvert == 4) return "IV";
-
-      StringBuilder romanNumber = new StringBuilder();
-      int end = toConvert;
-
-      if (toConvert >= 5) {
-        romanNumber.append("V");
-        end = toConvert - 5;
-      }
-
-      for (int i = 1; i <= end; ++i)
-        romanNumber.append("I");
-
-      return romanNumber.toString();
-    } else {
-      return "X";
+    StringBuilder romanNumber = new StringBuilder();
+    int restToTreat = toConvert;
+    while (restToTreat > 0) {
+      restToTreat = buildRomanNumber(romanNumber, restToTreat);
     }
+    return romanNumber.toString();
+  }
+
+  private int buildRomanNumber(StringBuilder romanNumber, int restToTreat) {
+    for (NumbersCorrespondence correspondence : NumbersCorrespondence.values()) {
+      restToTreat = findRomanValue(romanNumber, restToTreat, correspondence);
+    }
+    return restToTreat;
+  }
+
+  private int findRomanValue(StringBuilder romanNumber, int restToTreat, NumbersCorrespondence correspondence) {
+    if (restToTreat >= correspondence.arabicValue) {
+      romanNumber.append(correspondence.romanValue);
+      restToTreat -= correspondence.arabicValue;
+    }
+    return restToTreat;
   }
 }
