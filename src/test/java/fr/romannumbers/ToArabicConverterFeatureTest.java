@@ -16,5 +16,6 @@ public class ToArabicConverterFeatureTest {
   @Test
   public void should_convert_from_roman_to_arabic() throws Exception {
     assertThat(converter.convertFromRomanToArabic("MCMIII")).isEqualTo(1903);
+    assertThat(converter.convertFromRomanToArabic("MMMDCCCLII")).isEqualTo(3852);
   }
 }

@@ -13,8 +13,20 @@ public class NumberConverter {
   public int convertFromRomanToArabic(String toConvert) {
     int arabicValue = 0;
     for (int i = 0; i < toConvert.length(); ++i) {
-      ++arabicValue;
+      NumbersCorrespondence correspondence = NumbersCorrespondence.findByRoman(toConvert.substring(i, i + 1));
+
+      if ((i + 1) < toConvert.length()) {
+        NumbersCorrespondence correspondenceNextChar = NumbersCorrespondence.findByRoman(toConvert.substring(i + 1, i + 2));
+        if (correspondenceNextChar.arabicValue > correspondence.arabicValue) {
+          NumbersCorrespondence doubleCharCorrespondence = NumbersCorrespondence.findByRoman(toConvert.substring(i, i + 2));
+          arabicValue += doubleCharCorrespondence.arabicValue;
+          i += 1;
+        } else
+          arabicValue += correspondence.arabicValue;
+      } else
+        arabicValue += correspondence.arabicValue;
     }
+
     return arabicValue;
   }
 

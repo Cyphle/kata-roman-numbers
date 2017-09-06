@@ -6,7 +6,6 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ToArabicConverterTest {
-
   private NumberConverter converter;
 
   @Before
@@ -27,5 +26,15 @@ public class ToArabicConverterTest {
   @Test
   public void should_convert_III_to_arabic_3() throws Exception {
     assertThat(converter.convertFromRomanToArabic("III")).isEqualTo(3);
+  }
+
+  @Test
+  public void should_convert_IV_to_arabic_4() throws Exception {
+    assertThat(converter.convertFromRomanToArabic("IV")).isEqualTo(4);
+  }
+
+  @Test
+  public void should_convert_V_to_arabic_5() throws Exception {
+    assertThat(converter.convertFromRomanToArabic("V")).isEqualTo(5);
   }
 }

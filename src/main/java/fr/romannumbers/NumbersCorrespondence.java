@@ -1,5 +1,7 @@
 package fr.romannumbers;
 
+import java.util.Arrays;
+
 enum NumbersCorrespondence {
   THOUSAND(1000, "M"),
   NINE_HUNDRED(900, "CM"),
@@ -21,5 +23,12 @@ enum NumbersCorrespondence {
   NumbersCorrespondence(int arabicValue, String romanValue) {
     this.arabicValue = arabicValue;
     this.romanValue = romanValue;
+  }
+
+  public static NumbersCorrespondence findByRoman(String toFind) {
+    return Arrays.stream(values())
+            .filter(number -> number.romanValue.equals(toFind))
+            .findAny()
+            .orElse(values()[0]);
   }
 }
