@@ -28,4 +28,9 @@ public class RomanConverterTest {
   public void should_convert_arabic_3_to_roman_III() throws Exception {
     assertThat(converter.convertFromArabicToRoman(3)).isEqualTo("III");
   }
+
+  @Test
+  public void should_convert_arabic_4_to_roman_IV() throws Exception {
+    assertThat(converter.convertFromArabicToRoman(4)).isEqualTo("IV");
+  }
 }
