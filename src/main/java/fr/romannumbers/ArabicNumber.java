@@ -4,7 +4,7 @@ import static fr.romannumbers.NumbersCorrespondence.ONE;
 
 class ArabicNumber {
   private final StringBuilder romanNumber;
-  private int arabicNumber;
+  private final int arabicNumber;
 
   ArabicNumber(int arabicNumber) {
     this.arabicNumber = arabicNumber;

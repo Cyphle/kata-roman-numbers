@@ -20,7 +20,7 @@ enum NumbersCorrespondence {
   ONE(1, "I");
 
   public final int arabicValue;
-  public final String romanValue;
+  private final String romanValue;
 
   NumbersCorrespondence(int arabicValue, String romanValue) {
     this.arabicValue = arabicValue;

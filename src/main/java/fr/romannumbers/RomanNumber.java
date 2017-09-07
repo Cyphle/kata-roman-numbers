@@ -1,7 +1,7 @@
 package fr.romannumbers;
 
 class RomanNumber {
-  private String romanNumber;
+  private final String romanNumber;
   private int arabicValue;
 
   RomanNumber(String romanNumber) {
