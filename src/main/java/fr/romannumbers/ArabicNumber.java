@@ -17,18 +17,19 @@ public class ArabicNumber {
   }
 
   private void convertToRoman(int restToTreat) {
-    if (restToTreat > 0) {
-      int finalRestToTreat = restToTreat;
-      NumbersCorrespondence correspondenceToRest = NumbersCorrespondence.getValueOrDescendingOrder()
-              .stream()
-              .filter(correspondence -> correspondence.isLowerOrEqualThan(finalRestToTreat))
-              .findAny()
-              .orElse(ONE);
+    int finalRestToTreat = restToTreat;
+    NumbersCorrespondence correspondenceToRest = NumbersCorrespondence.getValueOrDescendingOrder()
+            .stream()
+            .filter(correspondence -> correspondence.isLowerOrEqualThan(finalRestToTreat))
+            .findAny()
+            .orElse(ONE);
+    correspondenceToRest.addRomanValueTo(romanNumber);
+    restToTreat = correspondenceToRest.subtractArabicValueFrom(restToTreat);
 
-      correspondenceToRest.addRomanValueTo(romanNumber);
-      restToTreat = correspondenceToRest.subtractArabicValueFrom(restToTreat);
-      
-      convertToRoman(restToTreat);
-    }
+    if (doContinueRecursive(restToTreat)) convertToRoman(restToTreat);
+  }
+
+  private boolean doContinueRecursive(int restToTreat) {
+    return restToTreat > 0;
   }
 }
