@@ -1,6 +1,8 @@
 package fr.romannumbers;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 enum NumbersCorrespondence {
   THOUSAND(1000, "M"),
@@ -42,5 +44,11 @@ enum NumbersCorrespondence {
 
   public int subtractArabicValueFrom(int reference) {
     return reference - arabicValue;
+  }
+
+  public static List<NumbersCorrespondence> getValueOrDescendingOrder() {
+    return Arrays.stream(values())
+            .sorted((firstCorrespondence, secondCorrespondence) -> secondCorrespondence.arabicValue - firstCorrespondence.arabicValue)
+            .collect(Collectors.toList());
   }
 }

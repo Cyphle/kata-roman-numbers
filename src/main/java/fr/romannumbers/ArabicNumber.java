@@ -16,7 +16,7 @@ public class ArabicNumber {
 
   private void convertToRoman(int restToTreat) {
     if (restToTreat > 0) {
-      for (NumbersCorrespondence correspondence : NumbersCorrespondence.values()) {
+      for (NumbersCorrespondence correspondence : NumbersCorrespondence.getValueOrDescendingOrder()) {
         if (correspondence.isLowerOrEqualThan(restToTreat)) {
           correspondence.addRomanValueTo(romanNumber);
           restToTreat = correspondence.subtractArabicValueFrom(restToTreat);
