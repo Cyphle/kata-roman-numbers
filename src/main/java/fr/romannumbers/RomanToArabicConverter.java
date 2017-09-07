@@ -1,10 +1,7 @@
 package fr.romannumbers;
 
 public class RomanToArabicConverter {
-  public RomanToArabicConverter() {
-  }
-
-  int convertFromRomanToArabic(String toConvert) {
+  int convert(String toConvert) {
     int arabicValue = 0;
     for (int i = 0; i < toConvert.length(); ++i) {
       NumbersCorrespondence correspondence = NumbersCorrespondence.findByRoman(toConvert.substring(i, i + 1));
