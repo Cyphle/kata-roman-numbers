@@ -31,4 +31,16 @@ enum NumbersCorrespondence {
             .findAny()
             .orElse(values()[0]);
   }
+
+  public boolean isLowerOrEqualThan(int toCompare) {
+    return arabicValue <= toCompare;
+  }
+
+  public void addRomanValueTo(StringBuilder romanNumber) {
+    romanNumber.append(romanValue);
+  }
+
+  public int subtractArabicValueFrom(int reference) {
+    return reference - arabicValue;
+  }
 }

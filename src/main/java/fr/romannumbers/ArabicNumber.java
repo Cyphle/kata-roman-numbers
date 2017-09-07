@@ -17,11 +17,12 @@ public class ArabicNumber {
   private void convertToRoman(int restToTreat) {
     if (restToTreat > 0) {
       for (NumbersCorrespondence correspondence : NumbersCorrespondence.values()) {
-        if (restToTreat >= correspondence.arabicValue) {
-          romanNumber.append(correspondence.romanValue);
-          restToTreat -= correspondence.arabicValue;
+        if (correspondence.isLowerOrEqualThan(restToTreat)) {
+          correspondence.addRomanValueTo(romanNumber);
+          restToTreat = correspondence.subtractArabicValueFrom(restToTreat);
         }
       }
+
       convertToRoman(restToTreat);
     }
   }
