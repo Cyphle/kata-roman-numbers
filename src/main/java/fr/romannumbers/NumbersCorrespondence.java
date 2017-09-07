@@ -1,6 +1,8 @@
 package fr.romannumbers;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 enum NumbersCorrespondence {
   THOUSAND(1000, "M"),
@@ -18,7 +20,7 @@ enum NumbersCorrespondence {
   ONE(1, "I");
 
   public final int arabicValue;
-  public final String romanValue;
+  private final String romanValue;
 
   NumbersCorrespondence(int arabicValue, String romanValue) {
     this.arabicValue = arabicValue;
@@ -30,5 +32,23 @@ enum NumbersCorrespondence {
             .filter(number -> number.romanValue.equals(toFind))
             .findAny()
             .orElse(values()[0]);
+  }
+
+  public boolean isLowerOrEqualThan(int toCompare) {
+    return arabicValue <= toCompare;
+  }
+
+  public void addRomanValueTo(StringBuilder romanNumber) {
+    romanNumber.append(romanValue);
+  }
+
+  public int subtractArabicValueFrom(int reference) {
+    return reference - arabicValue;
+  }
+
+  public static List<NumbersCorrespondence> getValueOrDescendingOrder() {
+    return Arrays.stream(values())
+            .sorted((firstCorrespondence, secondCorrespondence) -> secondCorrespondence.arabicValue - firstCorrespondence.arabicValue)
+            .collect(Collectors.toList());
   }
 }

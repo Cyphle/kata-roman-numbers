@@ -6,16 +6,16 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ToArabicConverterFeatureTest {
-  private NumberConverter converter;
+  private RomanToArabicConverter converter;
 
   @Before
   public void setUp() throws Exception {
-    converter = new NumberConverter();
+    converter = new RomanToArabicConverter();
   }
 
   @Test
   public void should_convert_from_roman_to_arabic() throws Exception {
-    assertThat(converter.convertFromRomanToArabic("MCMIII")).isEqualTo(1903);
-    assertThat(converter.convertFromRomanToArabic("MMMDCCCLII")).isEqualTo(3852);
+    assertThat(converter.convert("MCMIII")).isEqualTo(1903);
+    assertThat(converter.convert("MMMDCCCLII")).isEqualTo(3852);
   }
 }
