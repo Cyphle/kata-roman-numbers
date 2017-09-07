@@ -2,16 +2,16 @@ package fr.romannumbers;
 
 import static fr.romannumbers.NumbersCorrespondence.ONE;
 
-public class ArabicNumber {
+class ArabicNumber {
   private final StringBuilder romanNumber;
   private int arabicNumber;
 
-  public ArabicNumber(int arabicNumber) {
+  ArabicNumber(int arabicNumber) {
     this.arabicNumber = arabicNumber;
     this.romanNumber = new StringBuilder();
   }
 
-  public String toRoman() {
+  String toRoman() {
     convertToRoman(this.arabicNumber);
     return romanNumber.toString();
   }
