@@ -6,11 +6,11 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ToArabicConverterTest {
-  private NumberConverter converter;
+  private RomanToArabicConverter converter;
 
   @Before
   public void setUp() throws Exception {
-    converter = new NumberConverter();
+    converter = new RomanToArabicConverter();
   }
 
   @Test

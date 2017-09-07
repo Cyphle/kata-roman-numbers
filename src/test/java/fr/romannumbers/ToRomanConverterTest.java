@@ -61,6 +61,13 @@ public class ToRomanConverterTest {
 
   @Test
   public void should_convert_any_number_to_roman() throws Exception {
+    assertThat(converter.convertFromArabicToRoman(45)).isEqualTo("XLV");
+    assertThat(converter.convertFromArabicToRoman(94)).isEqualTo("XCIV");
     assertThat(converter.convertFromArabicToRoman(1903)).isEqualTo("MCMIII");
+  }
+
+  @Test
+  public void should_convert_99_to_XCIC() throws Exception {
+    assertThat(converter.convertFromArabicToRoman(99)).isEqualTo("XCIX");
   }
 }
