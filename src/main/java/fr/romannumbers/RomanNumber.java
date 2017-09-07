@@ -1,27 +1,44 @@
 package fr.romannumbers;
 
-public class RomanNumber {
+class RomanNumber {
   private String romanNumber;
+  private int arabicValue;
 
-  public RomanNumber(String romanNumber) {
+  RomanNumber(String romanNumber) {
     this.romanNumber = romanNumber;
+    this.arabicValue = 0;
   }
 
-  public int toArabic() {
-    int arabicValue = 0;
-    for (int i = 0; i < romanNumber.length(); ++i) {
-      NumbersCorrespondence correspondence = NumbersCorrespondence.findByRoman(romanNumber.substring(i, i + 1));
-      NumbersCorrespondence correspondenceNextChar = correspondence;
-
-      if ((i + 1) < romanNumber.length())
-        correspondenceNextChar = NumbersCorrespondence.findByRoman(romanNumber.substring(i + 1, i + 2));
-
-      if (correspondenceNextChar.arabicValue > correspondence.arabicValue) {
-        arabicValue += NumbersCorrespondence.findByRoman(romanNumber.substring(i, i + 2)).arabicValue;
-        i += 1;
-      } else
-        arabicValue += correspondence.arabicValue;
-    }
+  int toArabic() {
+    convertToArabic();
     return arabicValue;
+  }
+
+  private void convertToArabic() {
+    for (int i = 0; i < romanNumber.length(); ++i) {
+      NumbersCorrespondence correspondence = NumbersCorrespondence.findByRoman(String.valueOf(romanNumber.charAt(i)));
+      int valueToAdd = correspondence.arabicValue;
+
+      if (isADoubleCharRomanValue(i, correspondence)) {
+        NumbersCorrespondence doubleCharRomanValue = NumbersCorrespondence.findByRoman(romanNumber.substring(i, i + 2));
+        valueToAdd = doubleCharRomanValue.arabicValue;
+        i += 1;
+      }
+
+      arabicValue += valueToAdd;
+    }
+  }
+
+  private boolean isADoubleCharRomanValue(int i, NumbersCorrespondence correspondence) {
+    return hasNextChar(i) && hasNextCharAHigherArabicValueThan(i + 1, correspondence);
+  }
+
+  private boolean hasNextCharAHigherArabicValueThan(int position, NumbersCorrespondence correspondence) {
+    NumbersCorrespondence nextCharCorrespondence = NumbersCorrespondence.findByRoman(String.valueOf(romanNumber.charAt(position)));
+    return nextCharCorrespondence.arabicValue > correspondence.arabicValue;
+  }
+
+  private boolean hasNextChar(int position) {
+    return (position + 1) < romanNumber.length();
   }
 }
