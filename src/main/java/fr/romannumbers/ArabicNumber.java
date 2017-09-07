@@ -1,5 +1,7 @@
 package fr.romannumbers;
 
+import static fr.romannumbers.NumbersCorrespondence.ONE;
+
 public class ArabicNumber {
   private final StringBuilder romanNumber;
   private int arabicNumber;
@@ -16,13 +18,16 @@ public class ArabicNumber {
 
   private void convertToRoman(int restToTreat) {
     if (restToTreat > 0) {
-      for (NumbersCorrespondence correspondence : NumbersCorrespondence.getValueOrDescendingOrder()) {
-        if (correspondence.isLowerOrEqualThan(restToTreat)) {
-          correspondence.addRomanValueTo(romanNumber);
-          restToTreat = correspondence.subtractArabicValueFrom(restToTreat);
-        }
-      }
+      int finalRestToTreat = restToTreat;
+      NumbersCorrespondence correspondenceToRest = NumbersCorrespondence.getValueOrDescendingOrder()
+              .stream()
+              .filter(correspondence -> correspondence.isLowerOrEqualThan(finalRestToTreat))
+              .findAny()
+              .orElse(ONE);
 
+      correspondenceToRest.addRomanValueTo(romanNumber);
+      restToTreat = correspondenceToRest.subtractArabicValueFrom(restToTreat);
+      
       convertToRoman(restToTreat);
     }
   }
